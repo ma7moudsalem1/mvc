@@ -1,0 +1,17 @@
+{
+    "require": {
+        "illuminate/database": "^5.6"
+    },
+    "autoload": {
+    	"classmap": [
+    		"app/models"
+    	],
+        "files": [
+            "app/helpers/db.helper.php",
+            "app/helpers/html.helper.php",
+            "app/helpers/system.helper.php",
+            "app/helpers/array.helper.php",
+            "app/helpers/lang.helper.php"
+        ]
+    }
+}

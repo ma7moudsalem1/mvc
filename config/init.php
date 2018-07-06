@@ -1,3 +1,4 @@
 <?php
-use App\Core\App;
-use App\Core\Controller;
+
+require_once PROJECT_PATH . DS . 'vendor' . DS . 'autoload.php';
+require_once  CONFIG_PATH . DS . 'db.php';

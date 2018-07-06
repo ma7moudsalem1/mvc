@@ -1,25 +1,22 @@
 <?php
-namespace App\Core;
+namespace MVC\App\Core;
 
 class AutoLoad{
 
 	public static function autoload($class)
 	{
 		$extendion  = '.php';
-		$controller = APP_PATH . DS . 'controllers'. $class . DS . $extendion;
-		$core       = APP_PATH . DS . 'core'. DS . $class . $extendion;
-		$model      = APP_PATH . DS . 'model' . DS . $class . DS . $extendion;
-		echo $core;
+		$class = str_replace('MVC', '', $class);
+		$array = explode('\\', $class);
+		$className = end($array);
+		array_pop($array);
+		$class = strToLower(implode($array, '\\')) . '\\' . $className;
+		$class = PROJECT_PATH . $class . $extendion;
+
 		try {
 
-			if(file_exists($controller)){
-				require_once $controller;
-			}elseif (file_exists($core)) {
-				require_once $core;
-			}elseif (file_exists($model)) {
-				require_once $model;
-			}else{
-				echo "Class Not Found";
+			if(file_exists($class)){
+				require_once $class;
 			}
 
 		} catch (Exception $e) {
