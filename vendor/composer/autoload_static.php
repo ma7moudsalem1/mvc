@@ -8,6 +8,7 @@ class ComposerStaticIniteb05ccfa022bfeb5dbe8f695abf42b35
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         'c25cd8534b711c71f0e3f911caac2c0e' => __DIR__ . '/../..' . '/app/helpers/db.helper.php',
         '33b91b8a3f08556ceaf2537e94b2ec89' => __DIR__ . '/../..' . '/app/helpers/html.helper.php',
@@ -25,14 +26,20 @@ class ComposerStaticIniteb05ccfa022bfeb5dbe8f695abf42b35
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
+            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
         'I' => 
         array (
+            'Intervention\\Image\\' => 19,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Database\\' => 20,
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
         ),
         'D' => 
         array (
@@ -53,9 +60,17 @@ class ComposerStaticIniteb05ccfa022bfeb5dbe8f695abf42b35
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
         'Illuminate\\Support\\' => 
         array (
@@ -72,6 +87,10 @@ class ComposerStaticIniteb05ccfa022bfeb5dbe8f695abf42b35
         'Illuminate\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
         'Doctrine\\Common\\Inflector\\' => 
         array (

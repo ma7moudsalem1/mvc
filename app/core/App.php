@@ -9,12 +9,17 @@ class App{
 
 	protected $_params     = [];
 
+	protected $_isAdmin    = 0; 
+
+	protected $_template; 
+
 	/**
 	* Constuct Note
 	*
 	**/
-	public function __construct()
+	public function __construct(Template $template)
 	{
+		$this->_template = $template;
 		$this->parseUrl();		
 	}
 
@@ -27,6 +32,12 @@ class App{
 	{
 		if(isset($_GET['url'])){
 			$url = explode('/', trim(parse_url($_GET['url'], PHP_URL_PATH), '/'), 3);
+
+			if(isset($url[0]) && $url[0] != '' && strtolower($url[0]) == 'admin'){
+				unset($url[0]);
+				$this->_isAdmin = 1;
+			}
+
 			if(isset($url[0]) && $url[0] != ''){
 				$this->_controller = $url[0];
 			}
@@ -44,7 +55,14 @@ class App{
 
 	public function dispatch()
 	{
-		$className  = CONTROLLERS_NAMESPACE . ucfirst($this->_controller) . 'Controller';
+		if($this->_isAdmin){
+			$className    = ADMIN_CONTROLLERS_NAMESPACE . ucfirst($this->_controller) . CONTROLLER_FILE_PREFIX;
+			$templateType = ADMIN_TEMPLETE_PRFIX;
+		}else{
+			$className    = CONTROLLERS_NAMESPACE . ucfirst($this->_controller) . CONTROLLER_FILE_PREFIX;
+			$templateType = TEMPLETE_PRFIX;
+		}
+		
 		$error 		= CORE_NAMESPACE . 'Error';
 		$action     = $this->_action;
 		if(class_exists($className)){
@@ -52,6 +70,8 @@ class App{
 			if(method_exists($controller, $action)){
 				$controller->setController($this->_controller);
 				$controller->setAction($this->_action);
+				$controller->setTemplateType($templateType);
+				$controller->setTemplate($this->_template);
 				$controller->$action();
 			}else{
 				// Not Found Action
